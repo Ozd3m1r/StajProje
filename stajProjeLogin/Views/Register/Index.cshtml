@@ -1,0 +1,58 @@
+﻿@model stajProjeLogin.Models.RegisterModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form asp-action="Index" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label asp-for="ADI" class="control-label"></label>
+                <input asp-for="ADI" class="form-control" />
+                <span asp-validation-for="ADI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SOYADI" class="control-label"></label>
+                <input asp-for="SOYADI" class="form-control" />
+                <span asp-validation-for="SOYADI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KULLANICI_ADI"  class="control-label"></label>
+                <input asp-for="KULLANICI_ADI" class="form-control" />
+                <span asp-validation-for="KULLANICI_ADI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SIFRE" class="control-label"></label>
+                <input asp-for="SIFRE" type="password" class="form-control" />
+                <span asp-validation-for="SIFRE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+
+            <div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+        </form>
+        @if (ViewBag.Token != null)
+        {
+            <div class="alert alert-success">
+                
+                <strong>Registration successful!</strong> Here is your token: @ViewBag.Token
+            </div>
+        }
+        <div>
+            <a href="@Url.Action("Index", "Login")" class="btn btn-secondary">Giriş Sayfası</a>
+            <a href="@Url.Action("Index","Home")" class="btn btn-secondary">Ana Sayfa</a>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
